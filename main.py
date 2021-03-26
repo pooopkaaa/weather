@@ -1,7 +1,11 @@
 import requests
 
-url = 'http://wttr.in/san%20francisco?nTqu&lang=en'
-response = requests.get(url)
-response.raise_for_status()
+places = ['san francisco', 'Лондон', 'svo', 'Череповец']
+payload = {'nTqu': '', 'lang': 'en'}
+url_template = 'http://wttr.in/{}'
 
-print(response.text)
+for place in places:
+    url = url_template.format(place)
+    response = requests.get(url, params=payload)
+    response.raise_for_status()
+    print(response.text)
