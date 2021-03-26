@@ -1,14 +1,18 @@
 import requests
 
-places = ['san francisco', 'Лондон', 'svo', 'Череповец']
-payload = {'n': '', 'T': '', 'q': '', 'c': '', 'm': '', 'M': '', 'lang': 'ru'}
+PLACES = ['Лондон', 'svo', 'Череповец']
+PAYLOAD = {'n': '', 'T': '', 'q': '', 'c': '', 'm': '', 'M': '', 'lang': 'ru'}
 
-url_template = 'http://wttr.in/{}'
 
-for place in places:
-    url = url_template.format(place)
-    response = requests.get(url, params=payload)
-    response.raise_for_status()
-    print(response.text)
+def main():
+    url_template = 'http://wttr.in/{}'
 
-print(response.url)
+    for place in PLACES:
+        url = url_template.format(place)
+        response = requests.get(url, params=PAYLOAD)
+        response.raise_for_status()
+        print(response.text)
+
+
+if __name__ == '__main__':
+    main()
